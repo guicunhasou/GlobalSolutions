@@ -1,0 +1,82 @@
+@import './variables.css';
+
+body {
+background-color: var(--color-bg-blue);
+margin: 0;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.custom-card {
+    border-radius: 20px;
+    border: 2px solid var(--color-teal);
+    background: var(--gradiente-1);
+    display: flex;
+    flex-direction: column;
+    height: 520px;
+    overflow: hidden;
+    align-items: center;
+    padding-top: 1rem;
+   
+  }
+
+.search-bar-wrapper {
+width: 400px; 
+}
+
+
+.search-bar {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+background: white;
+border-radius: 50px;
+border: 2px solid var(--color-teal);
+padding: 0.25rem 0.5rem;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+height: 40px; 
+}
+
+
+.search-bar input.form-control {
+border: none;
+padding-left: 1rem;
+border-radius: 50px;
+font-size: 0.9rem;
+color: var(--color-dark-gray);
+height: 32px; 
+box-shadow: none;
+outline: none;
+background: transparent;
+flex-grow: 1;
+}
+
+
+.search-bar button.btn {
+border-radius: 0 50px 50px 0;
+width: 36px; 
+height: 32px; 
+padding: 0;
+border: 2px solid var(--color-blue-moon);
+border-left: none;
+background: white;
+color: var(--color-blue-moon);
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.search-bar button.btn:hover {
+background-color: var(--color-blue-moon);
+color: white;
+}
+
+#map {
+flex-grow: 1;
+width: 100%;
+border-radius: 0 0 20px 20px;
+min-height: 350px;
+margin-top: 1rem;
+}   
