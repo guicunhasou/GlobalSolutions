@@ -91,20 +91,23 @@ body {
   color: #333;
 }
 
+.search-btn {
+  border-radius: 60%;
+  width: 45px; 
+  height: 45px; 
+  padding: 0;
+  border: 3px solid #4C9DB0;;
+  background: var(--primarywhite);
+  color: var(--color-blue-moon);
+  cursor: pointer;
+  display: flex;
+  gap: 2px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-  .autocomplete-suggestions {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #fff;
-    border: 1px solid #ccc;
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 9999;
-    border-radius: 0 0 10px 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
 
 
 .autocomplete-suggestion {
