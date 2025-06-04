@@ -1,203 +1,206 @@
 body {
-  background-color: lightsteelblue;
-  margin: 0;
-  padding: 0;
+    background-color: lightsteelblue;
+    margin: 0;
+    padding: 0;
 }
 
 header {
-  height: 10vh;
-  display: flex;
-  align-items: center;
-  justify-content: center; 
-  padding: 0 30px;
-  padding-top: 30px;
+    height: 10vh;
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    padding-top: 30px; */
 }
 
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 20px
-}
+/* .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px
+} */
 
 .logo img {
-  width: 150px;
-  height: 150px;
+    width: 150px;
+    height: 150px;
 }
 
 .busca {
-  width: 350px;
-  height: 50px;
-  background-color: #003366; /* azul escuro */
-  border-radius: 30px;
-  position: relative;
-  cursor: pointer;
-  overflow: visible; /* IMPORTANTE: deixar as opções aparecerem fora */
+    width: 350px;
+    height: 50px;
+    background-color: #003366;
+    /* azul escuro */
+    /* border-radius: 30px; */
+    /* position: relative; */
+    cursor: pointer;
+    /* overflow: visible; */
+    /* IMPORTANTE: deixar as opções aparecerem fora */
 }
 
 .busca input {
-  width: 100%;
-  height: 100%;
-  padding-left: 20px;
-  border-radius: 30px;
-  border: none;
-  outline: none;
-  font-size: 16px;
-  color: white;
-  background-color: transparent;
-  line-height: 50px;
-  cursor: pointer;
-  user-select: none;
+    /* width: 100%;
+    height: 100%; */
+    /* padding-left: 20px; */
+    /* border-radius: 30px; */
+    /* border: none; */
+    outline: none;
+    /* font-size: 16px; */
+    /* color: white; */
+    /* background-color: transparent; */
+    line-height: 50px;
+    cursor: pointer;
+    /* user-select: none; */
 }
 
 .busca .opcoes {
-  display: none;
-  position: absolute;
-  left: 0;
-  width: 100%;
-  background-color: #004080; 
-  border-radius: 20px; /* bem redonda! */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  list-style: none;
-  margin: 0;
-  padding: 10px 0;
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 10;
+    /* display: none;
+    position: absolute;
+    left: 0;
+    width: 100%; */
+    background-color: #004080;
+    /* border-radius: 20px; */
+    /* bem redonda! */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    /* list-style: none; */
+    /* margin: 0; */
+    /* padding: 10px 0; */
+    max-height: 200px;
+    /* overflow-y: auto; */
+    z-index: 10;
 }
 
 .busca .opcoes li {
-  padding: 10px 25px;
-  cursor: pointer;
-  border-radius: 15px;
-  color: white;
-  margin: 5px 15px;
-  background-color: #003366;
+    padding: 10px 25px;
+    cursor: pointer;
+    /* border-radius: 15px; */
+    /* color: white; */
+    /* margin: 5px 15px; */
+    background-color: #003366;
 }
 
 .busca.active .opcoes {
-  display: block;
+    display: block;
 }
 
 main {
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 20px;
-  box-sizing: border-box; 
+    height: 80vh;
+    /* display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 20px; */
+    box-sizing: border-box;
 }
 
 footer {
-  height: 10vh;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  background-color: steelblue;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    height: 10vh;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: steelblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-footer img{
-  height: 1.5vmin;
+footer img {
+    height: 1.5vmin;
 }
 
 footer p {
-  color: #FCF3F6;
-  font-size: 1.5vmin;
-  margin: 1vmin;
+    /* color: #FCF3F6; */
+    font-size: 1.5vmin;
+    /* margin: 1vmin; */
 }
 
 .mapa,
 .mapa-container {
-  position: relative;
-  width: 50%;
-  height: 90%;
-  border-radius: 5vmin;
-  overflow: hidden;
-  cursor: grab;
-  background-color: darkcyan;
+    /* position: relative; */
+    width: 50%;
+    height: 90%;
+    /* border-radius: 5vmin;
+    overflow: hidden; */
+    cursor: grab;
+    background-color: darkcyan;
 }
 
 .mapa {
-  z-index: 1;
+    z-index: 1;
 }
 
 .mapa-container:active {
-  cursor: grabbing;
+    cursor: grabbing;
 }
 
 .mapa-conteudo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform-origin: 0 0;
-  transition: transform 0.1s ease-out;
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    transform-origin: 0 0;
+    transition: transform 0.1s ease-out;
 }
 
 .mapa-imagem {
-  position: absolute;
-  top: 0;
-  left: 0;
-  user-select: none;
-  pointer-events: none;
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    user-select: none;
+    pointer-events: none;
 }
 
 .marcador {
-  position: absolute;
-  width: 3vmin;
-  height: 3vmin;
-  background-color: red;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 5;
+    position: absolute;
+    width: 3vmin;
+    height: 3vmin;
+    background-color: red;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 5;
 }
 
 .mais {
-  display: none;
-  position: absolute;
-  width: 5vmin;
-  height: 5vmin;
-  background-color: #c3960f;
-  border-radius: 50%;
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
-  cursor: pointer;
-  z-index: 10;
+    /* display: none; */
+    /* position: absolute; */
+    width: 5vmin;
+    height: 5vmin;
+    background-color: #c3960f;
+    /* border-radius: 50%; */
+    transition: all 0.3s ease-in-out;
+    /* overflow: hidden; */
+    cursor: pointer;
+    z-index: 10;
 }
 
 .mais.expandido {
-  width: 30vmin;
-  height: auto;
-  padding: 1vmin;
-  border-radius: 2vmin;
-  background-color: #ffe08a;
+    width: 30vmin;
+    height: auto;
+    padding: 1vmin;
+    border-radius: 2vmin;
+    background-color: #ffe08a;
 }
 
 .opcoes {
-  display: none;
-  flex-direction: column;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  gap: 0.5vmin;
+    display: none;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 0.5vmin;
 }
 
 .mais.expandido .opcoes {
-  display: flex;
+    display: flex;
 }
 
 .opcoes li {
-  background-color: white;
-  padding: 0.5vmin 1vmin;
-  border-radius: 1vmin;
-  cursor: pointer;
-  transition: background-color 0.2s;
+    background-color: white;
+    padding: 0.5vmin 1vmin;
+    border-radius: 1vmin;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 .opcoes li:hover {
-  background-color: #ddd;
+    background-color: #ddd;
 }
