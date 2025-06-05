@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const mais = document.querySelector('.mais');
     const opcoes = document.querySelectorAll('.mais .opcoes li'); 
   
-  
     const busca = document.querySelector('.busca');
     const inputBusca = busca.querySelector('input');
     const opcoesBusca = busca.querySelector('.opcoes');
@@ -23,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const minScale = 0.5;
     const maxScale = 2;
   
-   
     function getMapaAtual() {
       for (const img of mapaImagens) {
         if (img.style.display !== 'none') return img;
@@ -58,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
       mapaConteudo.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
     }
   
-    // Drag
     mapaContainer.addEventListener('mousedown', (e) => {
       isDragging = true;
       hasMoved = false;
@@ -85,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateConteudoTransform();
     });
   
-
     mapaContainer.addEventListener('wheel', (e) => {
       e.preventDefault();
   
@@ -110,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
       updateConteudoTransform();
     }, { passive: false });
   
-   
     mapaContainer.addEventListener('click', (event) => {
       if (hasMoved || mais.contains(event.target)) return;
   
@@ -127,20 +122,17 @@ document.addEventListener('DOMContentLoaded', () => {
       mais.classList.remove('expandido');
     });
   
-   
     mais.addEventListener('click', (event) => {
       event.stopPropagation();
       mais.classList.add('expandido');
     });
   
-
     document.addEventListener('click', (event) => {
       if (!mais.contains(event.target)) {
         mais.classList.remove('expandido');
       }
     });
   
-   
     opcoes.forEach(opcao => {
       opcao.addEventListener('click', () => {
         const marcador = document.createElement('div');
@@ -159,7 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   
-  
     mapaImagens.forEach(img => {
       img.onload = () => {
         if (img.style.display !== 'none') {
@@ -177,30 +168,25 @@ document.addEventListener('DOMContentLoaded', () => {
       };
     });
   
-   
     inputBusca.addEventListener('focus', () => {
-      busca.classList.add('active'); 
+      busca.classList.add('active');
     });
   
- 
     itensBusca.forEach(item => {
       item.addEventListener('click', () => {
         inputBusca.value = item.textContent;
         busca.classList.remove('active');
   
         const mapaId = item.getAttribute('data-mapa');
-        
-       
+  
         mapaImagens.forEach(img => {
           img.style.display = 'none';
         });
-        
-       
+  
         const mapaMostrar = document.querySelector(`.${mapaId}`);
         if (mapaMostrar) {
           mapaMostrar.style.display = 'block';
   
-         
           scale = 1;
           const containerWidth = mapaContainer.offsetWidth;
           const containerHeight = mapaContainer.offsetHeight;
@@ -213,12 +199,70 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     });
-  
-   
+    
     document.addEventListener('click', (e) => {
       if (!busca.contains(e.target)) {
         busca.classList.remove('active');
       }
     });
+  
+    const textosAviso = [
+      { msg: "⚠️ Chuva forte chegando em sua região.", tipo: "warning" },
+      { msg: "🌬️ Atenção: rajadas de vento acima de 60km/h.", tipo: "danger" },
+      { msg: "🔥 Tempo seco aumenta risco de incêndios.", tipo: "danger" },
+      { msg: "🏚️ Novo abrigo aberto no bairro Esperança.", tipo: "info" },
+      { msg: "🌪️ Possibilidade de ciclone à noite.", tipo: "warning" },
+      { msg: "🏥 Atendimento médico emergencial disponível no centro.", tipo: "success" },
+      { msg: "🌊 Alerta de enchente em áreas próximas a rios.", tipo: "danger" },
+      { msg: "❄️ Frio intenso previsto: cuidados com a população vulnerável.", tipo: "info" },
+      { msg: "🧭 Saiba quais abrigos têm perto de você.", tipo: "primary" },
+      { msg: "🚨 Evite transitar em áreas de risco.", tipo: "danger" },
+      { msg: "📱 Mantenha seu celular carregado para emergências.", tipo: "info" },
+      { msg: "🧯 Kit de emergência: verifique se o seu está completo.", tipo: "info" },
+      { msg: "🛰️ Monitoramento indica risco de deslizamento.", tipo: "warning" },
+      { msg: "🛑 Alerta de tsunami em regiões costeiras.", tipo: "danger" },
+      { msg: "🚧 Rotas de fuga atualizadas, veja no mapa.", tipo: "primary" },
+      { msg: "🏫 Abrigo aberto na Escola Municipal Monte Azul.", tipo: "success" },
+      { msg: "🌀 Formação de granizo detectada na zona oeste.", tipo: "warning" },
+      { msg: "🌡️ Calor extremo: evite exposição ao sol.", tipo: "danger" },
+      { msg: "📻 Sintonize a rádio local para instruções ao vivo.", tipo: "info" },
+      { msg: "📍 Veja os pontos seguros mais próximos no mapa.", tipo: "primary" },
+      { msg: "💧 Distribuição de água potável no abrigo da Vila Nova.", tipo: "success" },
+      { msg: "📦 Ajuda humanitária chegando ao bairro Novo Horizonte.", tipo: "success" }
+    ];
+  
+    function mostrarAviso() {
+      const caixa = document.getElementById('avisosBox');
+      const aviso = textosAviso[Math.floor(Math.random() * textosAviso.length)];
+  
+      const novoAviso = document.createElement('div');
+      novoAviso.className = `aviso aviso-${aviso.tipo}`;
+      novoAviso.innerHTML = `
+        <span>${aviso.msg}</span>
+        <button class="fechar">&times;</button>
+      `;
+  
+      // Evento para fechar aviso
+      novoAviso.querySelector('.fechar').addEventListener('click', () => {
+        novoAviso.classList.add('hide');
+        setTimeout(() => novoAviso.remove(), 500);
+      });
+  
+      caixa.appendChild(novoAviso);
+  
+      setTimeout(() => {
+        novoAviso.classList.add('hide');
+        setTimeout(() => novoAviso.remove(), 500);
+      }, 6000); // Aviso fica visível por 6 segundos
+    }
+  
+    function iniciarAvisos() {
+      mostrarAviso();
+      setInterval(() => {
+        mostrarAviso();
+      }, Math.random() * 3000 + 3000); // Intervalo aleatório entre 3 e 6 segundos
+    }
+  
+    iniciarAvisos();
   });
   
