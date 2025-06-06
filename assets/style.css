@@ -90,7 +90,8 @@ footer p {
   height: 3.5vmin;
   position: absolute;
   transform: translate(-50%, -50%);
-  pointer-events: none;
+  cursor: pointer;
+  pointer-events: auto; /* <- HABILITA CLIQUES */
   z-index: 5;
 }
 
