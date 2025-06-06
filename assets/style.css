@@ -6,6 +6,16 @@ body {
 
 header {
   height: 10vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.logo {
+  width: 25%;
+  height: 75%;
+  background-color: steelblue;
+  border-radius: 5vmin;
 }
 
 .logo img {
@@ -13,44 +23,24 @@ header {
   height: 150px;
 }
 
-.busca {
-  width: 350px;
-  height: 50px;
-  background-color: #003366;
-  cursor: pointer;
-}
-
-.busca input {
-  outline: none;
-  line-height: 50px;
-  cursor: pointer;
-}
-
-.busca .opcoes {
-  background-color: #004080;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  max-height: 200px;
-  z-index: 10;
-}
-
-.busca .opcoes li {
-  padding: 10px 25px;
-  cursor: pointer;
-  background-color: #003366;
-}
-
-.busca.active .opcoes {
-  display: block;
-}
-
 main {
   height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
 }
 
 footer {
   height: 10vh;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
   background-color: steelblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 footer img {
@@ -58,12 +48,18 @@ footer img {
 }
 
 footer p {
+  color: #FCF3F6;
   font-size: 1.5vmin;
+  margin: 1vmin;
 }
 
 .mapa,
 .mapa-container {
+  position: relative;
+  width: 50%;
   height: 90%;
+  border-radius: 5vmin;
+  overflow: hidden;
   cursor: grab;
   background-color: darkcyan;
 }
@@ -77,65 +73,137 @@ footer p {
 }
 
 .mapa-conteudo {
+  position: absolute;
+  top: 0;
+  left: 0;
   transform-origin: 0 0;
   transition: transform 0.1s ease-out;
 }
 
 .mapa-imagem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  user-select: none;
   pointer-events: none;
 }
 
 .marcador {
+  width: 3.5vmin;
+  height: 3.5vmin;
   position: absolute;
-  width: 3vmin;
-  height: 3vmin;
-  background-color: red;
-  border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 5;
 }
 
+.busca {
+  width: 350px;
+  height: 50px;
+  background-color: #003366;
+  cursor: pointer;
+  border-radius: 5vmin 5vmin 0 0;
+  z-index: 2;
+}
+
+.busca input {
+  outline: none;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+.busca .cidades {
+  background-color: #004080;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  max-height: 200px;
+  list-style: none;
+  z-index: 10;
+  display: none;
+}
+
+.busca .cidades li {
+  padding: 10px 25px;
+  cursor: pointer;
+  background-color: #003366;
+}
+
+.busca.active .cidades {
+  display: block;
+}
+
 .mais {
+  display: none;
+  position: absolute;
   width: 5vmin;
   height: 5vmin;
-  background-color: #c3960f;
+  background-color: #C7F389;
+  border-radius: 50%;
   transition: all 0.3s ease-in-out;
+  overflow: hidden;
   cursor: pointer;
   z-index: 10;
 }
 
 .mais.expandido {
-  width: 30vmin;
-  height: auto;
-  padding: 1vmin;
-  border-radius: 2vmin;
-  background-color: #ffe08a;
+  width: 25vmin;
+  height: 25vmin;
+  padding: 2vmin;
+  border-radius: 50%;
+  background-color: #C7F389;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
 }
 
 .opcoes {
   display: none;
-  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 100%;
   list-style: none;
-  padding: 0;
-  margin: 0;
-  gap: 0.5vmin;
 }
 
 .mais.expandido .opcoes {
-  display: flex;
+  display: block;
 }
 
 .opcoes li {
-  background-color: white;
-  padding: 0.5vmin 1vmin;
-  border-radius: 1vmin;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  position: absolute;
+  width: 5vmin;
+  height: 5vmin;
+  transform: translate(-50%, -50%);
 }
 
-.opcoes li:hover {
-  background-color: #ddd;
+.opcoes li img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.opcoes li:hover img {
+  transform: scale(1.2);
+}
+
+.mais .nome-desastre {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5vmin;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  z-index: 1;
+}
+
+.mais.expandido.mostrar-nome .nome-desastre {
+  opacity: 1;
 }
 
 .avisos-box {
@@ -145,6 +213,7 @@ footer p {
   z-index: 1000;
   gap: 10px;
   font-family: Arial, sans-serif;
+  position: absolute;
 }
 
 .aviso {

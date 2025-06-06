@@ -4,11 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const mapaImagens = document.querySelectorAll('.mapa-imagem');
   const mais = document.querySelector('.mais');
   const opcoes = document.querySelectorAll('.mais .opcoes li');
+  const nomeDesastre = document.querySelector('.nome-desastre'); // Adicionado
 
   const busca = document.querySelector('.busca');
   const inputBusca = busca.querySelector('input');
-  const opcoesBusca = busca.querySelector('.opcoes');
-  const itensBusca = opcoesBusca.querySelectorAll('li');
+  const cidadesBusca = busca.querySelector('.cidades');
+  const itensBusca = cidadesBusca.querySelectorAll('li');
 
   let isDragging = false;
   let hasMoved = false;
@@ -52,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const bounds = getBounds();
     offsetX = clamp(offsetX, bounds.minX, bounds.maxX);
     offsetY = clamp(offsetY, bounds.minY, bounds.maxY);
-
     mapaConteudo.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
   }
 
@@ -69,7 +69,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('mousemove', (e) => {
     if (!isDragging) return;
-
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
 
@@ -125,27 +124,31 @@ document.addEventListener('DOMContentLoaded', () => {
   mais.addEventListener('click', (event) => {
     event.stopPropagation();
     mais.classList.add('expandido');
+    distribuirEmCirculo();
   });
 
   document.addEventListener('click', (event) => {
     if (!mais.contains(event.target)) {
       mais.classList.remove('expandido');
     }
+    if (!busca.contains(event.target)) {
+      busca.classList.remove('active');
+    }
   });
 
   opcoes.forEach(opcao => {
     opcao.addEventListener('click', () => {
-      const marcador = document.createElement('div');
+      const marcador = document.createElement('img');
       marcador.classList.add('marcador');
-      marcador.title = opcao.textContent;
-
+      marcador.alt = opcao.getAttribute('data-label');
+      marcador.title = opcao.getAttribute('data-label');
+      const iconeSrc = opcao.querySelector('img').getAttribute('src');
+      marcador.setAttribute('src', iconeSrc);
       marcador.style.left = `${clickX}px`;
       marcador.style.top = `${clickY}px`;
       marcador.style.position = 'absolute';
       marcador.style.transform = 'translate(-50%, -50%)';
-
       mapaConteudo.appendChild(marcador);
-
       mais.classList.remove('expandido');
       mais.style.display = 'none';
     });
@@ -176,24 +179,17 @@ document.addEventListener('DOMContentLoaded', () => {
     item.addEventListener('click', () => {
       inputBusca.value = item.textContent;
       busca.classList.remove('active');
-
       const mapaId = item.getAttribute('data-mapa');
-      console.log(`Tentando mostrar mapa: ${mapaId}`); // Para debug
 
-      // Esconder todos os mapas
       mapaImagens.forEach(img => {
         img.style.display = 'none';
-        img.classList.add('d-none'); // Garante que está escondido
+        img.classList.add('d-none');
       });
 
-      // Mostrar o mapa selecionado
       const mapaMostrar = document.querySelector(`.${mapaId}`);
       if (mapaMostrar) {
-        console.log(`Mapa encontrado: ${mapaId}`); // Para debug
         mapaMostrar.style.display = 'block';
         mapaMostrar.classList.remove('d-none');
-
-        // Espera a imagem carregar se não estiver pronta
         if (mapaMostrar.complete) {
           resetMapPosition(mapaMostrar);
         } else {
@@ -201,13 +197,10 @@ document.addEventListener('DOMContentLoaded', () => {
             resetMapPosition(mapaMostrar);
           };
         }
-      } else {
-        console.error(`Mapa não encontrado: ${mapaId}`);
       }
     });
   });
 
-  // Função auxiliar para resetar a posição do mapa
   function resetMapPosition(mapaElement) {
     scale = 1;
     const containerWidth = mapaContainer.offsetWidth;
@@ -219,12 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
     offsetY = (containerHeight - imageHeight) / 2;
     updateConteudoTransform();
   }
-
-  document.addEventListener('click', (e) => {
-    if (!busca.contains(e.target)) {
-      busca.classList.remove('active');
-    }
-  });
 
   const textosAviso = [
     { msg: "⚠️ Chuva forte chegando em sua região.", tipo: "warning" },
@@ -258,30 +245,55 @@ document.addEventListener('DOMContentLoaded', () => {
     const novoAviso = document.createElement('div');
     novoAviso.className = `aviso aviso-${aviso.tipo}`;
     novoAviso.innerHTML = `
-        <span>${aviso.msg}</span>
-        <button class="fechar">&times;</button>
-      `;
+      <span>${aviso.msg}</span>
+      <button class="fechar">&times;</button>
+    `;
 
-    // Evento para fechar aviso
     novoAviso.querySelector('.fechar').addEventListener('click', () => {
       novoAviso.classList.add('hide');
       setTimeout(() => novoAviso.remove(), 500);
     });
 
     caixa.appendChild(novoAviso);
-
     setTimeout(() => {
       novoAviso.classList.add('hide');
       setTimeout(() => novoAviso.remove(), 500);
-    }, 6000); // Aviso fica visível por 6 segundos
+    }, 6000);
   }
 
   function iniciarAvisos() {
     mostrarAviso();
     setInterval(() => {
       mostrarAviso();
-    }, Math.random() * 3000 + 3000); // Intervalo aleatório entre 3 e 6 segundos
+    }, Math.random() * 3000 + 3000);
   }
 
   iniciarAvisos();
+
+  function distribuirEmCirculo() {
+    const itens = document.querySelectorAll('.opcoes li');
+    const raio = 40;
+    const total = itens.length;
+
+    itens.forEach((item, i) => {
+      const angulo = (2 * Math.PI * i) / total;
+      const x = 50 + raio * Math.cos(angulo);
+      const y = 50 + raio * Math.sin(angulo);
+      item.style.left = `${x}%`;
+      item.style.top = `${y}%`;
+    });
+  }
+
+  document.querySelectorAll('.opcoes li').forEach(li => {
+    li.addEventListener('mouseenter', () => {
+      const nome = li.getAttribute('data-label');
+      nomeDesastre.textContent = nome.toUpperCase();
+      mais.classList.add('mostrar-nome');
+    });
+
+    li.addEventListener('mouseleave', () => {
+      nomeDesastre.textContent = '';
+      mais.classList.remove('mostrar-nome');
+    });
+  });
 });

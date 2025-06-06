@@ -20,7 +20,7 @@
     <div class="busca rounded-5 position-relative overflow-visible ps-0 mt-0">
       <input type="text" id="search" placeholder="Selecione uma cidade" readonly
         class="w-100 ps-3 rounded-5 border-0 fs-6 text-light bg-transparent user-select-none" />
-      <ul class="opcoes position-absolute start-0 w-100 rounded-4 m-1 py-2 px-0 overflow-y-auto">
+      <ul class="cidades position-absolute start-0 w-100 rounded-4 m-1 py-2 px-0 overflow-y-auto">
         <li data-mapa="mapa-sp" class="rounded-4 text-light my-1 mx-3 d-block">São Paulo</li>
         <li data-mapa="mapa-pe" class="rounded-4 text-light my-1 mx-3">Recife</li>
         <li data-mapa="mapa-mg" class="rounded-4 text-light my-1 mx-3">Belo Horizonte</li>
@@ -41,19 +41,20 @@
         <img src="./assets/images/mapa-rs.png" alt="Mapa de Porto Alegre" class="mapa-rs mapa-imagem d-none" />
 
       </div>
-      <div class="mais position-absolute rounded-4 overflow-hidden p-2">
-        <ul class="opcoes list-unstyled">
-          <li class="fw-medium">Alagamento</li>
-          <li class="fw-medium">Deslizamento</li>
-          <li class="fw-medium">Terremoto</li>
-          <li class="fw-medium">Incêndios</li>
-          <li class="fw-medium">Tsunami</li>
-          <li class="fw-medium">Ciclone</li>
-          <li class="fw-medium">Granizo</li>
-          <li class="fw-medium">Nevasca</li>
-          <li class="fw-medium">Seca</li>
+      <div class="mais">
+        <div class="nome-desastre"></div>
+        <ul class="opcoes">
+          <li data-label="Terremoto"><img src="./assets/icons/terremoto.svg" alt="Terremoto"></li>
+          <li data-label="Seca"><img src="./assets/icons/seca.svg" alt="Seca"></li>
+          <li data-label="Deslizamento"><img src="./assets/icons/deslizamento.svg" alt="Deslizamento"></li>
+          <li data-label="Incêndios"><img src="./assets/icons/incendio.svg" alt="Incêndio"></li>
+          <li data-label="Nevasca"><img src="./assets/icons/nevasca.svg" alt="Nevasca"></li>
+          <li data-label="Ciclone"><img src="./assets/icons/ciclone.svg" alt="Ciclone"></li>
+          <li data-label="Alagamento"><img src="./assets/icons/alagamento.svg" alt="Alagamento"></li>
+          <li data-label="Tsunami"><img src="./assets/icons/tsunami.svg" alt="Tsunami"></li>
         </ul>
       </div>
+
     </div>
   </main>
 
