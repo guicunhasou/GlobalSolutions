@@ -14,12 +14,12 @@
 
 <body>
   <header class="d-flex align-items-center justify-content-center pt-3 px-4 pb-2 mt-3 mb-0">
-    <div class="logo d-flex justify-content-center align-items-center me-3 mt-2">
+    <div class="logo d-flex justify-content-center align-items-center me-0 mt-2">
       <img src="./assets/images/logo.svg" alt="Logo" />
     </div>
-    <div class="busca rounded-5 position-relative overflow-visible ps-0 mt-0">
+    <div class="busca rounded-5 position-relative overflow-visible ps-0 mt-0 me-5">
       <input type="text" id="search" placeholder="Selecione uma cidade" readonly
-        class="w-100 ps-3 rounded-5 border-0 fs-6 text-light bg-transparent user-select-none" />
+        class="w-100 ps-3 rounded-5 border-0 fs-6 text-light bg-transparent user-select-none input" />
       <ul class="cidades position-absolute start-0 w-100 rounded-4 m-1 py-2 px-0 overflow-y-auto">
         <li data-mapa="mapa-sp" class="rounded-4 text-light my-1 mx-3 d-block">São Paulo</li>
         <li data-mapa="mapa-pe" class="rounded-4 text-light my-1 mx-3">Recife</li>
@@ -41,24 +41,35 @@
         <img src="./assets/images/mapa-rs.png" alt="Mapa de Porto Alegre" class="mapa-rs mapa-imagem d-none" />
 
       </div>
-      <div class="mais">
+      <div class="mais position-absolute overflow-hidden">
         <div class="nome-desastre"></div>
-        <ul class="opcoes">
-          <li data-label="Terremoto"><img src="./assets/icons/terremoto.svg" alt="Terremoto"></li>
-          <li data-label="Seca"><img src="./assets/icons/seca.svg" alt="Seca"></li>
-          <li data-label="Deslizamento"><img src="./assets/icons/deslizamento.svg" alt="Deslizamento"></li>
-          <li data-label="Incêndios"><img src="./assets/icons/incendio.svg" alt="Incêndio"></li>
-          <li data-label="Nevasca"><img src="./assets/icons/nevasca.svg" alt="Nevasca"></li>
-          <li data-label="Ciclone"><img src="./assets/icons/ciclone.svg" alt="Ciclone"></li>
-          <li data-label="Alagamento"><img src="./assets/icons/alagamento.svg" alt="Alagamento"></li>
-          <li data-label="Tsunami"><img src="./assets/icons/tsunami.svg" alt="Tsunami"></li>
+        <ul class="opcoes position-relative w-100 h-100 list-unstyled">
+          <li data-label="Terremoto"><img src="./assets/icons/terremoto.svg" alt="Terremoto"
+              class="w-100 h-100 object-fit-contain">
+          </li>
+          <li data-label="Seca"><img src="./assets/icons/seca.svg" alt="Seca" class="w-100 h-100 object-fit-contain">
+          </li>
+          <li data-label="Deslizamento"><img src="./assets/icons/deslizamento.svg" alt="Deslizamento"
+              class="w-100 h-100 object-fit-contain"></li>
+          <li data-label="Incêndios"><img src="./assets/icons/incendio.svg" alt="Incêndio"
+              class="w-100 h-100 object-fit-contain">
+          </li>
+          <li data-label="Nevasca"><img src="./assets/icons/nevasca.svg" alt="Nevasca"
+              class="w-100 h-100 object-fit-contain"></li>
+          <li data-label="Ciclone"><img src="./assets/icons/ciclone.svg" alt="Ciclone"
+              class="w-100 h-100 object-fit-contain"></li>
+          <li data-label="Alagamento"><img src="./assets/icons/alagamento.svg" alt="Alagamento"
+              class="w-100 h-100 object-fit-contain">
+          </li>
+          <li data-label="Tsunami"><img src="./assets/icons/tsunami.svg" alt="Tsunami"
+              class="w-100 h-100 object-fit-contain"></li>
         </ul>
       </div>
 
     </div>
   </main>
 
-  <div class="avisos-box position-fixed d-flex flex-column" id="avisosBox"></div>
+  <div class="avisos-box position-absolute d-flex flex-column" id="avisosBox"></div>
 
   <footer class="w-100 position-fixed bottom-0 d-flex flex-column justify-content-center align-items-center">
     <img src="./assets/images/fiap.svg" alt="Logo Fiap" />
