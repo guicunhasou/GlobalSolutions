@@ -132,7 +132,7 @@ footer p {
 .mais {
   width: 5vmin;
   height: 5vmin;
-  background-color: #C7F389;
+  background-color: #AFE874;
   border-radius: 50%;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
@@ -144,7 +144,7 @@ footer p {
   height: 25vmin;
   padding: 2vmin;
   border-radius: 50%;
-  background-color: #C7F389;
+  background-color: #AFE874;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -180,7 +180,7 @@ footer p {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 1.5vmin;
-  color: #333;
+  color: #2B4B56;
   font-weight: bold;
   text-align: center;
   opacity: 0;
@@ -247,4 +247,12 @@ footer p {
 
 .aviso-primary {
   background-color: #337ab7;
+}
+
+.mais {
+  display: none;
+}
+
+.mais.expandido .icone-mais {
+  display: none;
 }
