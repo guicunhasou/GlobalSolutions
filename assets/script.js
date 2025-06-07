@@ -233,9 +233,30 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     mapaInicial.onload = () => resetMapPosition(mapaInicial);
   }
-
-  // Avisos flutuantes (sem alterações)
-  const textosAviso = [ /* ...mensagens... */ ];
+  const textosAviso = [
+    { msg: "⚠️ Chuva forte chegando em sua região.", tipo: "warning" },
+    { msg: "🌬️ Atenção: rajadas de vento acima de 60km/h.", tipo: "danger" },
+    { msg: "🔥 Tempo seco aumenta risco de incêndios.", tipo: "danger" },
+    { msg: "🏚️ Novo abrigo aberto no bairro Esperança.", tipo: "info" },
+    { msg: "🌪️ Possibilidade de ciclone à noite.", tipo: "warning" },
+    { msg: "🏥 Atendimento médico emergencial disponível no centro.", tipo: "success" },
+    { msg: "🌊 Alerta de enchente em áreas próximas a rios.", tipo: "danger" },
+    { msg: "❄️ Frio intenso previsto: cuidados com a população vulnerável.", tipo: "info" },
+    { msg: "🧭 Saiba quais abrigos têm perto de você.", tipo: "primary" },
+    { msg: "🚨 Evite transitar em áreas de risco.", tipo: "danger" },
+    { msg: "📱 Mantenha seu celular carregado para emergências.", tipo: "info" },
+    { msg: "🧯 Kit de emergência: verifique se o seu está completo.", tipo: "info" },
+    { msg: "🛰️ Monitoramento indica risco de deslizamento.", tipo: "warning" },
+    { msg: "🛑 Alerta de tsunami em regiões costeiras.", tipo: "danger" },
+    { msg: "🚧 Rotas de fuga atualizadas, veja no mapa.", tipo: "primary" },
+    { msg: "🏫 Abrigo aberto na Escola Municipal Monte Azul.", tipo: "success" },
+    { msg: "🌀 Formação de granizo detectada na zona oeste.", tipo: "warning" },
+    { msg: "🌡️ Calor extremo: evite exposição ao sol.", tipo: "danger" },
+    { msg: "📻 Sintonize a rádio local para instruções ao vivo.", tipo: "info" },
+    { msg: "📍 Veja os pontos seguros mais próximos no mapa.", tipo: "primary" },
+    { msg: "💧 Distribuição de água potável no abrigo da Vila Nova.", tipo: "success" },
+    { msg: "📦 Ajuda humanitária chegando ao bairro Novo Horizonte.", tipo: "success" }
+  ];
 
   function mostrarAviso() {
     const caixa = document.getElementById('avisosBox');
